@@ -1,0 +1,44 @@
+ <script>
+  
+const doc= document.getElementById('d_Id');
+const dob= document.getElementById('dob');
+const btn= document.getElementById('sub');
+
+let docText = "";
+let dobData = "";
+
+doc.addEventListener("change", (e)=>{
+  let data = e.target.value;
+  docText = data;
+})
+
+dob.addEventListener("change", (e)=>{
+  const data = e.target.value;
+  // console.log(data)
+  dobData = data;
+})
+function updateUrl(url){
+  console.log('doc url', url);
+  var message;
+  if(!url){
+    message = '<h3>No document found</h3>';
+  }
+  else {
+    message= ` <a href="${url}" target="_blank">View Document📄</a>`;
+  }
+  var div=document.getElementById('output');
+  div.innerHTML= message;
+  btn.disabled = false;
+}
+ 
+btn.addEventListener("click", (e)=>{
+  btn.disabled = true;
+  google.script.run.withSuccessHandler(updateUrl).verification(docText,dobData)
+  google.script.run.withFailureHandler(e=>{
+   var message="ERROR!!  "+ e.message;
+   var div=document.getElementById('output');
+   div.innerHTML= message
+  }).verification(docText,dobData)
+})
+   
+</script>  

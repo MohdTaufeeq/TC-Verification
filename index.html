@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <?!= include('CSS'); ?>
+  </head>
+  <body>
+    <!-- <a href="https://drive.google.com/file/d/1Ycs-5aT99Pt1fPGgNQKpKiaz6s3zjA_I/view?usp=sharing" target="_blank">View Certificate</a> -->
+    <div class="form-set" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h2>Document Verification</h2>
+
+    <label for="d_Id"><b>Document Id</b></label>
+    <input id="d_Id" placeholder="Enter Document Id" name="doc_id" type="number" required>
+
+    <label for="dob"><b>Date of Birth</b></label>
+    <input id="dob" name="dob" type="date" required>
+
+    <button type="submit" id="sub">Verify</button>
+    <div id="output"></div>
+  </form>
+</div>
+    <?!= include('JavaScript'); ?>
+  </body>
+</html>
+
